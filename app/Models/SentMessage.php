@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class SentMessage extends Model
 {
-    protected $fillable = ['user_id', 'phone', 'message', 'status'];
+    protected $fillable = ['user_id', 'phone', 'message', 'status', 'batch_id'];
 
     public function user()
     {

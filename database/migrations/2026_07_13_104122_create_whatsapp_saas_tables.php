@@ -24,8 +24,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('phone');
             $table->string('name')->nullable();
-            $table->text('message');
-            $table->timestamp('received_at');
+            $table->text('message')->nullable();
+            $table->timestamp('received_at')->nullable();
             $table->timestamps();
         });
 
@@ -33,6 +33,7 @@ return new class extends Migration
         Schema::create('sent_messages', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('batch_id')->nullable()->index(); // 🌟 حقل جديد لتجميع رسائل الحملة الواحدة
             $table->string('phone');
             $table->text('message');
             $table->string('status')->default('pending'); // pending, sent, failed

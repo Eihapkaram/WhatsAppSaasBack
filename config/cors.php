@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['*'] || ['https://whats-app-saas-tawny.vercel.app/'],
+    'allowed_origins' => ['*'],
 
     'allowed_origins_patterns' => [],
 
@@ -27,8 +27,8 @@ return [
 
     'exposed_headers' => [],
 
-    'max_age' => 0,
+    'max_age' => 600,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];

@@ -23,9 +23,10 @@ Route::middleware('auth:api')->group(function () {
     Route::post('/save-settings', [WhatsappSaasController::class, 'saveSettings']);
 
     Route::post('/start-campaign', [WhatsappSaasController::class, 'startCampaign']);
-
+    Route::get('/get-settings', [WhatsappSaasController::class, 'getSettings']);
     Route::get('/received-messages', [WhatsappSaasController::class, 'getReceivedMessages']);
 
     Route::get('/export-messages', [WhatsappSaasController::class, 'exportExcel']);
+    Route::get('/campaign-progress/{batchId}', [WhatsappSaasController::class, 'getCampaignProgress']);
 
 });
