@@ -269,11 +269,19 @@ class WhatsappSaasController extends Controller
         ]);
     }
 
+    // 🌟 تم تحديث هذه الدالة لتدعم الـ Pagination الحقيقي من السيرفر
     public function getReceivedMessages(Request $request)
     {
-        return response()->json(
-            ReceivedMessage::where('user_id', $request->user()->id)->orderBy('received_at', 'desc')->get()
-        );
+        $messages = ReceivedMessage::where('user_id', $request->user()->id)
+            ->orderBy('received_at', 'desc')
+            ->paginate(10); // عرض 10 رسائل في الصفحة
+
+        return response()->json([
+            'data' => $messages->items(),
+            'current_page' => $messages->currentPage(),
+            'last_page' => $messages->lastPage(),
+            'total' => $messages->total(),
+        ]);
     }
 
     public function exportExcel(Request $request)
